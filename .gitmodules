@@ -1,0 +1,3 @@
+[submodule "static_lib/lib/Error-Handler"]
+	path = static_lib/lib/Error-Handler
+	url = https://github.com/citrixorange/Error-Handler

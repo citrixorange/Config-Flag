@@ -10,7 +10,10 @@
                 "-c",
                 "${workspaceFolder}/src/*.cpp",
                 "-I",
-                "${workspaceFolder}/inc"
+                "${workspaceFolder}/inc",
+                "-I",
+                "${workspaceFolder}/lib/Error-Handler/lib/inc"
+
             ],
             "group": {
                 "kind": "build",

@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++ Project",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-c",
+                "${workspaceFolder}/src/*.cpp",
+                "-I",
+                "${workspaceFolder}/inc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": []
+        },
+        {
+            "label": "Transfer Files to Obj Dir",
+            "type": "shell",
+            "command": "mv",
+            "args": [
+                "*.o",
+                "./bin/obj"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["Build C++ Project"]
+        },
+        {
+            "label": "Link Static Library",
+            "type": "shell",
+            "command": "ar",
+            "args": [
+                "rcs",  // Create a static library
+                "${workspaceFolder}/bin/config_flag_lib.a",  // Output library name
+                "${workspaceFolder}/bin/obj/*.o"  // Object files
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["Transfer Files to Obj Dir"]
+        }
+    ]
+}

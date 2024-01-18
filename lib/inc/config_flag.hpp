@@ -162,7 +162,7 @@ class GenericConfig {
                 } else {
                     return handleError(this->error_handler, ConfigError::CONFIG_NOT_FOUND);
                 }
-            } else if constexpr(is_same<T, vector<string>>::value) {
+            } else if constexpr (is_same<T, vector<string>>::value) {
                 auto res = this->string_vector_configs.get_parameter(config);
                 if (holds_alternative<vector<string>>(res)) {
                     return res;
